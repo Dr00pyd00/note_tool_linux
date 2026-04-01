@@ -1,24 +1,43 @@
-# Note tool Linux style!
+# 📝 note — CLI Note Tool for Linux
 
-This is a little tool for take some note in CLI, set a database in /home/user/.local/share/note/note.db.
+A simple command-line note-taking tool for Linux, storing notes in a local SQLite database.
 
-### clone the repo:
+## Requirements
+- Python 3.x (no external dependencies)
 
+## Installation
 ```bash
-# choose your folder ie : ~/home/me/
 git clone git@github.com:Dr00pyd00/note_tool_linux.git
-
+sudo mv note_tool_linux/notes_rapide.py /usr/bin/note
+sudo chmod 755 /usr/bin/note
 ```
-### Put in bin and give persmissions:
 
-After that we need to put a executable in binaries file:
-
+## Usage
 ```bash
-mv ~/home/me/note_tool_linux/notes_rapides.py /usr/bin/notes
-sudo chmod 744 /usr/bin/notes 
+# Add a note
+note "my note here"
 
+# Show all notes
+note
+
+# Zoom on a specific note
+note -z <id>
+
+# Delete a note by id
+note -d <id>
+
+# Reset all notes
+note --reset
+
+# Save command output as a note
+note "$(ip a)"
 ```
 
+## Database location
+Notes are stored in `~/.local/share/note/note.db` — automatically created on first launch.
 
-
-
+## Built with
+- Python 3 standard library
+- sqlite3
+- argparse
+- pathlib
